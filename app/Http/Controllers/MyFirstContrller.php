@@ -32,5 +32,12 @@ class MyFirstContrller extends Controller
           return redirect('order');
         
     }
+    //select
+    public function selectData(){
+        $allUsers=new order();
+        $allUsersData=$allUsers::all();
+        return view ('selectUsers',compact('allUsersData'));
+
+    }
   
 }
