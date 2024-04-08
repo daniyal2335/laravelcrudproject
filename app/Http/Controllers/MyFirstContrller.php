@@ -34,10 +34,26 @@ class MyFirstContrller extends Controller
     }
     //select
     public function selectData(){
-        $allUsers=new order();
-        $allUsersData=$allUsers::all();
+   
+        $allUsersData=order::all();
         return view ('selectUsers',compact('allUsersData'));
 
     }
+    //show
+    public function showData($uId){
+        $selectData=order::find($uId);
+        return view('edit',compact('selectData'));
+    }
+        //update
+        public function updateData(Request $req,$id){
+            $userData=order::find($id);
+            $userData->name=$req->uName;
+            $userData->email=$req->uEmail;
+            $userData->save();
+            return redirect('select2');
+
+
+
+        }
   
 }
